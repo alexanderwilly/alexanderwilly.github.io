@@ -1,0 +1,313 @@
+<html>
+<head>
+	<title>Assignment 2</title>
+	<style>
+		.mainborder {
+			background-color:white; 
+			width: 65%; 
+			margin-top: 10px; 
+			margin: auto; 
+			border-style:ridge; 
+			border-color:grey; 
+			opacity:0.95; 
+			padding: 35px;
+		}
+		h1{
+			font-family: bell mt;
+		}
+		.firstPart {
+			border: 1px solid black;
+			text-align: center;
+		}
+		.firstPart thead{
+			font-family: cambria;
+		}
+		.firstPart th{
+			background-color: #e0ecf4;
+		}
+		.firstPart tbody{
+			background-color: #ECECEC;
+		}
+		.secondPart thead{
+			font-family: cambria;
+			font-size: 32px;
+		}
+		.secondPart td{
+			background-color: #e0ecf4;
+		}
+		
+		.box > td{
+			text-align: center; 
+			background-color: #ECECEC;
+		}
+		#current_score{
+			color: #9f2b68;
+		}
+		
+	</style>
+</head>
+
+<body style = "background-color: #9F2B68">
+	
+	<div border = "1" class = "mainborder">
+		<h1>Part 1</h1>
+		<!-- Make the Table of group members -->
+		<table border = "1" class = "firstPart">
+			<thead>
+				<tr>
+					<th width = "60%" height = "30%" colspan = "3">CSIT128: Assignment 2</th>
+					<th width = "20%">Group T08G24</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td rowspan = "3" width = "20%" align = "center">Student Number / Name / Email</td>
+					<td >7907795</td> 
+					<td>Alexander Willy Johan</td> 
+					<td>awj109@uowmail.edu.au</td>
+				</tr>
+				<tr>
+					<td>7912249</td> 
+					<td>Jared Gabriele Calling Juangco</td> 
+					<td>jgcj743@uowmail.edu.au</td>
+				</tr>
+				<tr>
+					<td>7909901</td>
+					<td>Nicholas Jahja</td>
+					<td>nj756@uowmail.edu.au</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<br><br>
+		
+		<h1>Part 2</h1>
+		<!-- Game -->
+		<table border = "1" class = "secondPart" style = "margin: auto;">
+			<!-- Display the table header, which consists of the title of the game -->
+			<thead style = "text-align: center">
+				<tr>
+					<th style = "background-color: #FE828C" colspan = "3" width = "575px" height = "75px"><b>Part 2: Game<b></th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Display the table body, which consists of 
+				the number selection, current score, and clickable boxes that generates random number every 2 seconds -->
+				<tr>
+					<!-- Display the chosen number -->
+					<td width = "191px" height = "75px"><b>Your chosen number: </b><span id = "chosen_num"></span></td>
+					<!-- Choose a number -->
+					<td style = "text-align: center;" width = "191px" height = "75px">
+						Choose a number: 
+						<select id = "select_num">
+							<option value = "0">0</option>
+							<option value = "1">1</option>
+							<option value = "2">2</option>
+							<option value = "3">3</option>
+							<option value = "4">4</option>
+							<option value = "5">5</option>
+							<option value = "6">6</option>
+							<option value = "7">7</option>
+							<option value = "8">8</option>
+							<option value = "9">9</option>
+						</select>
+					</td>
+					<!-- Display the current game score -->
+					<td width = "191px" height = "75px" style = "background-color: #fae1a8"><b>Current score: </b><span id = "current_score">0</span> </td>
+				</tr>
+				<!-- Start Game and Stop Game buttons -->
+				<!-- When the game is not started, the "stop game" button will be disabled (will be enabled if the user click "start game" --> 
+				<tr>
+					<td colspan = "3" style = "text-align: center; background-color: #93E9BE;">
+						<input type = "button" value = "Start Game" id = "start_button" onClick = "start_game();" style = "margin-right: 10%;">
+						<input type = "button" value = "Stop Game" id = "stop_button" onClick = "stop_game()" style = "margin-left: 10%;" disabled = "true">
+					</td>
+				</tr>
+				<!-- Display boxes that generates random number every 2 seconds --> 
+				<tr class = "box">
+					<td width = "191px" height = "75px" id = "box1"></td>
+					<td width = "191px" height = "75px" id = "box2"></td>
+					<td width = "191px" height = "75px" id = "box3"></td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</div>
+	
+	
+	<script>
+		// Declare global variables
+		const select_num = document.getElementById("select_num");
+		const chosen_num = document.getElementById("chosen_num");
+		const current_score = document.getElementById("current_score");
+		const start_button = document.getElementById("start_button");
+		const box1 = document.getElementById("box1");
+		const box2 = document.getElementById("box2");
+		const box3 = document.getElementById("box3");
+		var on_play = false; // Default boolean (assume that the game is not started)
+		var play_game;
+		var has_clicked;
+		
+		box1.addEventListener("click", () =>{
+			// When the user clicked the first box, 
+			// checks if the game has started (on_play)
+			// checks if the user has not clicked the first box or other boxes (has_clicked)
+			// checks if the number shown in box 1 is equal to the selected number
+			// if the selected number are matched with the number shown in the box 1, add 4 points to the score. Minus 3 points otherwise
+			if(box1.value == parseInt(select_num.value) && !has_clicked && on_play){
+				current_score.innerHTML = parseInt(current_score.innerHTML) + 4;
+			}else if (box1.value != parseInt(select_num.value) && !has_clicked && on_play){
+				current_score.innerHTML = parseInt(current_score.innerHTML) - 3;
+			}else{
+				current_score.innerHTML = parseInt(current_score.innerHTML);
+			}
+			// The user has clicked the first box (disallow user to click and get points from the current box again or from other boxes)
+			has_clicked =  true;
+			
+		});
+		
+		box2.addEventListener("click", () =>{
+			// When the user clicked the second box, 
+			// checks if the game has started (on_play)
+			// checks if the user has not clicked the second box or other boxes (has_clicked)
+			// checks if the number shown in box 2 is equal to the selected number
+			// if the selected number are matched with the number shown in the box 2, add 4 points to the score. Minus 3 points otherwise
+			if(box2.value == parseInt(select_num.value) && !has_clicked && on_play){
+				current_score.innerHTML = parseInt(current_score.innerHTML) + 4;
+			}else if (box2.value != parseInt(select_num.value) && !has_clicked && on_play){
+				current_score.innerHTML = parseInt(current_score.innerHTML) - 3;
+			}else{
+				current_score.innerHTML = parseInt(current_score.innerHTML);
+			}
+			// The user has clicked the second box (disallow user to click and get points from the current box again or from other boxes)
+			has_clicked =  true;
+			
+		});
+		
+		box3.addEventListener("click", () =>{
+			// When the user clicked the third box, 
+			// checks if the game has started (on_play)
+			// checks if the user has not clicked the third box or other boxes (has_clicked)
+			// checks if the number shown in box 3 is equal to the selected number
+			// if the selected number are matched with the number shown in the box 3, add 4 points to the score. Minus 3 points otherwise
+			if(box3.value == parseInt(select_num.value) && !has_clicked && on_play){
+				current_score.innerHTML = parseInt(current_score.innerHTML) + 4;
+			}else if (box3.value != parseInt(select_num.value) && !has_clicked && on_play){
+				current_score.innerHTML = parseInt(current_score.innerHTML) - 3;
+			}else{
+				current_score.innerHTML = parseInt(current_score.innerHTML);
+			}
+			// The user has clicked the third box (disallow user to click and get points from the current box again or from other boxes)
+			has_clicked =  true;
+			
+		});
+		
+		// Function to start the game
+		function start_game(){
+			// Display the selected number in the "Chosen Number" box
+			chosen_num.innerHTML = select_num.value;
+			// Disable the select box to disallow user re-select other numbers while playing the game
+			select_num.disabled = true;
+			// Disable the start button to disallow user re-click the start button again
+			start_button.disabled = true;
+			// Enable the stop button to allow user stop the game
+			stop_button.disabled = false;
+			// The user is currently playing the game (on_play is true)
+			on_play = true;
+			// Set the current score to 0
+			current_score.innerHTML = 0;
+			
+			// 3 Boxes will randomly generate numbers each 2 seconds
+			play_game = setInterval(generate_numbers, 2000);
+		}
+		
+		// Function to stop the game
+		function stop_game(){
+			// Stop generating numbers
+			clearInterval(play_game);
+			// Enable the select box to allow user re-select other numbers
+			select_num.disabled = false;
+			// Enable the start button to allow user start the game again
+			start_button.disabled = false;
+			// Disable the stop button to disallow user to re-click the stop button again
+			stop_button.disabled = true;
+			// The user is currently not playing the game (on_play is false)
+			on_play = false;
+		}
+		
+		// Function to generate random numbers in the 3 boxes
+		function generate_numbers() {
+			// Collection of colors (in rgb for validation, disallow same color in other box)
+			const colors = ["rgb(247, 246, 207)", "rgb(154, 200, 235)", "rgb(244, 207, 223)", "rgb(190, 180, 197)", 
+			"rgb(99, 3, 48)", "rgb(215, 0, 64)", "rgb(228, 132, 0)", "rgb(96, 130, 182)", "rgb(172, 225, 175)", "rgb(255, 221, 170)", "rgb(253, 238, 0)",
+			"rgb(255, 255, 238)", "rgb(100, 84, 82), rgb(245, 243, 231)", "rgb(238, 186, 178)", "rgb(231, 203, 169)", "rgb(161, 205, 206)",
+			"rgb(230, 165, 126)", "rgb(152, 212, 187)", "rgb(198, 201, 208)", "rgb(44, 206, 210)", "rgb(242, 115, 72)", "rgb(249, 150, 139)", "rgb(164, 204, 227)",
+			"rgb(221, 242, 244)", "rgb(228, 206, 224)", "rgb(247, 206, 118)", "rgb(210, 159, 140)"];
+			
+			// For Box 1
+			// Generate random number from 0 - 9
+			var random_number = Math.floor(Math.random() * 10);
+			// Generate random color from the collection of colors
+			var random_color = colors[Math.floor(Math.random() * colors.length)];
+			// New numbers are generated, user has not clicked the boxes with the new number yet
+			has_clicked = false;
+			
+			// Display the generated number in the first box
+			box1.innerHTML = random_number;
+			// Set the first box value for validation (disallow repeating numbers in other boxes)
+			box1.value = random_number;
+			// Set the background color from the random generated color (random_color)
+			box1.style.backgroundColor = random_color;
+			
+			
+			// For Box 2
+			// Generate random number from 0 - 9
+			random_number = Math.floor(Math.random() * 10);
+			// Generate random color from the collection of colors
+			random_color = colors[Math.floor(Math.random() * colors.length)];
+			
+			// Keep generating number if the previous generated number is the same as other boxes (e.g. box 1)
+			while (random_number == box1.value){
+				random_number = Math.floor(Math.random() * 10);
+			}
+			
+			// Keep generating colors if the previous generated color is the same as the other boxes (e.g. box 1)
+			while (random_color == box1.style.backgroundColor){
+				random_color = colors[Math.floor(Math.random() * colors.length)];
+			}
+			// Display the generated number in the second box
+			box2.innerHTML = random_number;
+			// Set the second box value for validation (disallow repeating numbers in other boxes)
+			box2.value = random_number;
+			// Set the background color from the random generated color (random_color)
+			box2.style.backgroundColor = random_color;
+			
+			
+			//For Box 3
+			// Generate random number from 0 - 9
+			random_number = Math.floor(Math.random() * 10);
+			// Generate random color from the collection of colors
+			random_color = colors[Math.floor(Math.random() * colors.length)];
+			
+			// Keep generating number if the previous generated number is the same as other boxes (e.g. box 1, box 2)
+			while (random_number == box1.value || random_number == box2.value){
+				random_number = Math.floor(Math.random() * 10);
+			}
+			
+			// Keep generating colors if the previous generated color is the same as the other boxes (e.g. box 1, box 2)
+			while (random_color == box1.style.backgroundColor || random_color == box2.style.backgroundColor){
+				random_color = colors[Math.floor(Math.random() * colors.length)];
+			}
+			// Display the generated number in the third box
+			box3.innerHTML = random_number;
+			// Set the third box value for validation (disallow repeating numbers in other boxes)
+			box3.value = random_number;
+			// Set the background color from the random generated color (random_color)
+			box3.style.backgroundColor = random_color;
+		}
+		
+		
+
+	</script>
+</body>
+</html>
