@@ -12,9 +12,9 @@ function Nav() {
             <ul>
                 <li><a href ="#home" className = "active">Home</a></li>
                 <li><a href ="#about">About</a></li>
+                <li><a href ="#exp">Experience</a></li>
                 <li><a href ="#edu">Education</a></li>
                 <li><a href ="#cert">Certifications</a></li>
-                <li><a href ="#exp">Experience</a></li>
                 <li><a href ="#skills">Skills</a></li>
                 <li><a href ="#contact">Contact</a></li>
             </ul>
@@ -26,12 +26,10 @@ function Nav() {
 
 function Home(){
     return(
-        <React.Fragment>
-            <div className = "intro">
-                <h2>HI!</h2>
-                <h4>I'm Willy</h4>
-            </div>
-        </React.Fragment>
+        <div className = "intro">
+            <h2>HI!</h2>
+            <h4>I'm Willy</h4>
+        </div>
     );
 }
 
