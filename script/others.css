@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: "Inter", sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}

@@ -1,0 +1,35 @@
+#home{
+    padding: 16px;
+    margin-top: 80px;
+
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    
+    
+
+}
+
+.intro {
+    font-family: 'Aref Ruqaa', serif;
+    font-weight: 700;
+
+    color: #1A43BF;
+    width: 575px;
+    
+    
+    
+}
+
+.intro h2 {
+    font-size: 90px;
+}
+
+.intro h4{
+    font-size: 57px;
+}
+
+section:not(#home){
+    background-color: white;
+}
+
