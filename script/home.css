@@ -16,6 +16,7 @@
 
     color: #1A43BF;
     width: 575px;
+
     
     
     
@@ -25,8 +26,20 @@
     font-size: 90px;
 }
 
-.intro h4{
+.typing{
     font-size: 57px;
+}
+
+
+
+@keyframes typing{
+    from {width: 0;}
+    to {width: 100%;}
+}
+
+@keyframes blink-caret {
+    from, to {border-color: transparent;}
+    50%{border-color: white;}
 }
 
 section:not(#home){
