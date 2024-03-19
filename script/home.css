@@ -1,6 +1,6 @@
 #home{
     padding: 16px;
-    margin-top: 80px;
+    margin-top: 50px;
 
     display: flex;
     justify-content: center;
@@ -14,11 +14,12 @@
 
 .intro {
 
-    font-family: 'Aref Ruqaa', serif;
+    font-family: 'Noto Serif SC', serif;
     font-weight: 700;
 
-    width: 615px;
+    width: 650px;
     right: 325px;
+
 
 
 }
@@ -35,13 +36,13 @@
 }
 
 .intro h2 {
-    font-size: 90px;
+    font-size: 50px;
     color: white;
 }
 
 .typing, .intro h3{
-    font-size: 57px;
-    color: #1A43BF;
+    font-size: 50px;
+    color: #00b4d8;
     width: 105%;
 }
 
