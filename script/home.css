@@ -3,46 +3,62 @@
     margin-top: 80px;
 
     display: flex;
-    justify-content: right;
+    justify-content: center;
     align-items: center;
+
+    background-color: #00072D;
     
     
 
 }
 
 .intro {
+
     font-family: 'Aref Ruqaa', serif;
     font-weight: 700;
 
-    color: #1A43BF;
-    width: 575px;
+    width: 615px;
+    right: 325px;
 
+
+}
+
+
+.intro-box{
+    width: 250px;
+    font-size: 30px;
+    background-color: #051650;
+    color: whitesmoke;
     
-    
+    text-align: center;
     
 }
 
 .intro h2 {
     font-size: 90px;
+    color: white;
 }
 
-.typing{
+.typing, .intro h3{
     font-size: 57px;
+    color: #1A43BF;
+    width: 105%;
 }
 
 
 
-@keyframes typing{
-    from {width: 0;}
-    to {width: 100%;}
+
+#pfp{
+    height: 595px;
+    background-color: #eafaff;
+    margin-right: 150px;
+    border-radius: 35%;
 }
 
-@keyframes blink-caret {
-    from, to {border-color: transparent;}
-    50%{border-color: white;}
-}
 
-section:not(#home){
+
+
+section{
     background-color: white;
 }
 
