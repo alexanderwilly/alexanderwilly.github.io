@@ -43,7 +43,6 @@
 .typing, .intro h3{
     font-size: 50px;
     color: #00b4d8;
-    width: 105%;
 }
 
 
@@ -53,11 +52,228 @@
     height: 595px;
     background-color: #eafaff;
     margin-right: 150px;
-    border-radius: 35%;
+    border-radius: 5%;
+}
+
+/*Adjustments based on screen width*/
+@media (max-width:1300px){
+    .intro h2{
+        font-size: 40px;
+    }
+    .typing, .intro h3{
+        font-size: 40px;
+    }
+
+    .intro-box{
+        font-size: 20px;
+        width:170px;
+    }
+
+    #pfp{
+        height: 520px;
+        margin-left: 100px;
+    }
+    
+    .intro{
+        margin-left: -50px;
+    }
+
 }
 
 
+@media (max-width:1150px){
+    .intro h2{
+        font-size: 35px;
+    }
+    .typing, .intro h3{
+        font-size: 35px;
+    }
 
+    .intro-box{
+        font-size: 20px;
+        width:140px;
+    }
+
+    #pfp{
+        height: 450px;
+        margin-left: 100px;
+    }
+
+    .intro{
+        margin-left: -75px;
+    }
+
+
+}
+
+@media (max-width:960px){
+    .intro h2{
+        font-size: 30px;
+    }
+    .typing, .intro h3{
+        font-size: 30px;
+    }
+
+    .intro-box{
+        font-size: 15px;
+        width:120px;
+    }
+
+    #pfp{
+        height: 400px;
+        margin-left: 120px;
+    }
+
+}
+
+@media (max-width:870px){
+    .intro h2{
+        font-size: 25px;
+    }
+    .typing, .intro h3{
+        font-size: 25px;
+    }
+
+    .intro-box{
+        font-size: 13px;
+        width:115px;
+    }
+
+    #pfp{
+        height: 350px;
+        margin-left: 50px;
+    }
+
+    #home{
+        margin-top: 10px;
+    }
+
+    .intro{
+        margin-left: -100px;
+    }
+
+}
+
+@media (max-width:680px){
+    .intro h2{
+        font-size: 20px;
+    }
+    .typing, .intro h3{
+        font-size: 20px;
+    }
+
+    .intro-box{
+        font-size: 11px;
+        width:100px;
+    }
+
+    #pfp{
+        height: 300px;
+    }
+
+
+
+}
+
+@media (max-width:585px){
+    .intro h2{
+        font-size: 18px;
+    }
+    .typing, .intro h3{
+        font-size: 18px;
+    }
+
+    .intro-box{
+        font-size: 11px;
+        width:90px;
+    }
+
+    #pfp{
+        height: 270px;
+        margin-left: 35px;
+    }
+
+    .intro{
+        margin-left: -120px;
+    }
+}
+
+@media (max-width:505px){
+    #pfp{
+        height: 220px;
+    }
+}
+
+@media (max-width:470px){
+
+    .intro h2{
+        font-size: 15px;
+    }
+    .typing, .intro h3{
+        font-size: 15px;
+    }
+
+    .intro-box{
+        font-size: 8px;
+        width:75px;
+    }
+
+    #pfp{
+        height: 200px;
+    }
+}
+
+@media (max-width:420px){
+
+    .intro h2{
+        font-size: 13px;
+    }
+    .typing, .intro h3{
+        font-size: 13px;
+    }
+
+    .intro-box{
+        font-size: 7px;
+        width:65px;
+    }
+
+    #pfp{
+        height: 170px;
+    }
+}
+
+@media (max-width:375px){
+
+    .intro h2{
+        font-size: 10px;
+    }
+    .typing, .intro h3{
+        font-size: 10px;
+    }
+
+    .intro-box{
+        font-size: 5px;
+        width:40px;
+    }
+
+    #pfp{
+        height: 150px;
+    }
+
+}
+
+@media (max-width:350px){
+    
+    #pfp{
+        height: 150px;
+        margin-left: 5px;
+    }
+
+    .intro{
+        margin-left: -140px;
+    }
+
+}
 
 section{
     background-color: white;
